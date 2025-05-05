@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="774.0" prefWidth="348.0" spacing="20.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
+<VBox alignment="CENTER" prefHeight="774.0" prefWidth="348.0" spacing="20.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.LoginController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -67,7 +67,7 @@
                         <TextField fx:id="mot_de_passe" prefHeight="37.0" prefWidth="308.0" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
-                  <Label fx:id="login_button" style="-fx-background-color: #0f03e6; -fx-background-radius: 8px; -fx-text-fill: white; -fx-font-weight: bold;" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Label fx:id="login_button" styleClass="login" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="80.0" right="80.0" top="5.0" />
                      </padding>

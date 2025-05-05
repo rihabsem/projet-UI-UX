@@ -8,3 +8,142 @@
     -fx-background:  #1e1e1e;
 }
 
+.authenticate {
+    -fx-background-color: #0f03e6;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-padding: 5 10 5 10;
+}
+
+.authenticate:hover {
+    -fx-background-color: #6d66e8;   /* this will now work */
+    -fx-border-color: #0f03e6;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-border-radius: 8px;
+}
+
+.createButton{
+    -fx-background-color :  #0f03e6;
+    -fx-background-radius : 8px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+}
+.createButton:hover {
+    -fx-background-color: #6d66e8;   /* this will now work */
+    -fx-border-color: #0f03e6;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-border-radius: 8px;
+}
+.edit{
+    -fx-background-color :  #0f03e6;
+    -fx-background-radius : 10px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+}
+.edit:hover {
+    -fx-background-color: #6d66e8;   /* this will now work */
+    -fx-border-color: #0f03e6;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-border-radius: 8px;
+}
+.delete{
+    -fx-background-color :   #ff0000;
+    -fx-background-radius : 10px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+}
+
+.delete:hover {
+    -fx-background-color: #ef5b5b;   /* this will now work */
+    -fx-border-color: #ff0000;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-border-radius: 8px;
+}
+.lastWeek{
+    -fx-background-color :  rgba(49,49,49,255);
+    -fx-background-radius : 5px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+
+}
+.lastWeek:hover{
+    -fx-background-color : rgb(74, 74, 74);
+    -fx-background-radius : 5px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+
+}
+.lastYear:hover{
+    -fx-background-color : rgb(74, 74, 74);
+    -fx-background-radius : 5px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+
+}
+.lastYear{
+    -fx-background-color :  rgba(49,49,49,255);
+    -fx-background-radius : 5px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+
+}
+.clicked{
+    -fx-background-color :   rgba(15,3,230,255);
+    -fx-background-radius : 5px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+
+}
+
+.clicked:hover{
+    -fx-background-color :   #6d66e8;
+    -fx-background-radius : 5px;
+    -fx-text-fill : white;
+    -fx-font-weight : bold;
+}
+
+.login {
+    -fx-background-color: #0f03e6;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-font-weight : bold;
+}
+
+.login:hover {
+    -fx-background-color: #6d66e8;   /* this will now work */
+    -fx-border-color: #0f03e6;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-border-radius: 8px;
+}
+
+.sort_date{
+    -fx-background-color:  rgba(49,49,49,255);
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+}
+
+.clicked_choice{
+    -fx-background-color:   rgba(15,3,230,255);
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+}
+.clicked_choice:hover{
+    -fx-background-color: #6d66e8;
+    -fx-cursor: hand;
+    -fx-background-radius : 10px;
+    -fx-text-fill : white;
+}
+
+.sort_date:hover{
+    -fx-background-color :   rgb(74, 74, 74);
+    -fx-background-radius : 10px;
+    -fx-text-fill : white;
+    -fx-cursor: hand;
+}

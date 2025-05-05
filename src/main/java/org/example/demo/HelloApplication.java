@@ -11,7 +11,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("transaction_sort_date.fxml"));
         Parent root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
