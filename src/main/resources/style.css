@@ -1,0 +1,10 @@
+
+.my-line-chart .chart-plot-background {
+    -fx-background-color:  rgba(49,49,49,255);
+}
+
+.custom-scrollpane {
+    -fx-background-color:  #1e1e1e;
+    -fx-background:  #1e1e1e;
+}
+
