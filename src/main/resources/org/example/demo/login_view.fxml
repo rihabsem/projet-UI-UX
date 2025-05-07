@@ -47,7 +47,7 @@
                                         <Insets left="5.0" />
                                     </padding>
                                 </Label>
-                                <TextField fx:id="email" prefHeight="26.0" prefWidth="235.0" promptText="xxx@example.com" GridPane.rowIndex="1" />
+                                <TextField fx:id="email_field" prefHeight="26.0" prefWidth="235.0" promptText="xxx@example.com" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
                         <GridPane GridPane.rowIndex="1">

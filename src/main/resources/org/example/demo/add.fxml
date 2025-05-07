@@ -121,7 +121,7 @@
                         <TextField fx:id="note" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <Label fx:id="create_button" style=": ;" styleClass="createButton" text="Create " GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Label fx:id="create_button" onMouseClicked="#handleCreate" style=": ;" styleClass="createButton" text="Create " GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="80.0" right="80.0" top="5.0" />
                      </padding>
@@ -145,7 +145,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" GridPane.halignment="CENTER">
+                <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleTrack" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="track" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -163,7 +163,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Label GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                <Label onMouseClicked="#handleMenu" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="menu" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>

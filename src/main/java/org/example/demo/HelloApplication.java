@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("edit.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("last_week_transaction.fxml"));
         Parent root = fxmlLoader.load();
 
         Scene scene = new Scene(root);

@@ -55,7 +55,7 @@
                                 <Insets bottom="10.0" left="5.0" top="30.0" />
                             </GridPane.margin>
                         </VBox>
-                        <Label fx:id="choice_not_clicked" prefHeight="22.0" prefWidth="102.0" styleClass="sort_date" text="▲ Sort By Date" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <Label fx:id="choice_not_clicked" onMouseClicked="#handleSort" prefHeight="22.0" prefWidth="102.0" styleClass="sort_date" text="▲ Sort By Date" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                             <GridPane.margin>
                                 <Insets left="5.0" />
                             </GridPane.margin>
@@ -103,7 +103,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" GridPane.halignment="CENTER">
+                <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleTrack" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="track" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -112,7 +112,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Label GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                <Label onMouseClicked="#handleAdd" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="add" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>

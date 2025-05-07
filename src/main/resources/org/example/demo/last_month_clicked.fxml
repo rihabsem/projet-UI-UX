@@ -78,7 +78,7 @@
                     <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <Label fx:id="last_week" alignment="CENTER" prefHeight="22.0" prefWidth="85.0" styleClass="lastWeek" text="Last Week">
+                                <Label fx:id="last_week" alignment="CENTER" onMouseClicked="#handleLastWeekClicked" prefHeight="22.0" prefWidth="85.0" styleClass="lastWeek" text="Last Week">
                                     <padding>
                                         <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
                                     </padding>
@@ -94,7 +94,7 @@
                                         <Insets left="20.0" />
                                     </HBox.margin>
                                 </Label>
-                                <Label fx:id="last_year" alignment="CENTER" prefHeight="22.0" prefWidth="82.0" styleClass="lastYear" text="Last Year">
+                                <Label fx:id="last_year" alignment="CENTER" onMouseClicked="#handleLastYearClicked" prefHeight="22.0" prefWidth="82.0" styleClass="lastYear" text="Last Year">
                                     <padding>
                                         <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
                                     </padding>
@@ -149,7 +149,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Label GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                <Label onMouseClicked="#handleAddTransaction" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="add" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -158,7 +158,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Label GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                <Label onMouseClicked="#handleMenu" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="menu" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>

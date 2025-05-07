@@ -1,13 +1,19 @@
 package org.example.demo;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.example.demo.DB.DBUtil;
 import org.example.demo.session.Session;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,7 +69,7 @@ public class EditController {
     @FXML
     private void initialize() {
         edit.setOnMouseClicked(this::handleEditTransaction);
-        delete.setOnMouseClicked(this::handleDeleteTransaction);
+        //delete.setOnMouseClicked(this::handleDeleteTransaction);
 
         // Populate the categories combo box
         categories_edit.getItems().addAll("Groceries", "Transportation", "Family", "Other");
@@ -111,7 +117,7 @@ public class EditController {
         }
     }
 
-    private void handleDeleteTransaction(MouseEvent event) {
+    /*private void handleDeleteTransaction(MouseEvent event) {
         try (Connection conn = DBUtil.getConnection()) {
             String sql = "DELETE FROM transactions WHERE id = ? AND user_id = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -131,12 +137,75 @@ public class EditController {
             System.err.println("Error deleting transaction: " + e.getMessage());
             e.printStackTrace();
         }
-    }
+    }*/
 
     private void clearForm() {
         date_edit.clear();
         amont_edit.clear();
         categories_edit.setValue(null);
         note_edit.clear();
+    }
+
+    @FXML
+    public void handleEdit(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("transaction_sort_date.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void handleDelete(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("transaction_sort_date.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleMenu(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("transaction_sort_date.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleTrack(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("last_week_transaction.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

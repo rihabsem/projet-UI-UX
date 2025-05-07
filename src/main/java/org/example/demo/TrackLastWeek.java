@@ -1,14 +1,21 @@
 package org.example.demo;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.example.demo.session.Session;
 import org.example.demo.DB.DBUtil;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
@@ -112,4 +119,68 @@ public class TrackLastWeek implements Initializable {
             }
         }
     }
+    @FXML
+    public void handleMenu(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("transaction_sort_date.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleAdd(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("add.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleLastMonth(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("last_month_clicked.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleLastYear(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("last_year_clicked.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+

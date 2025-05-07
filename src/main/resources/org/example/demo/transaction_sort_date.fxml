@@ -63,7 +63,7 @@
                         <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="filter_category" prefHeight="22.0" prefWidth="124.0" styleClass="sort_date" text="Filter By Category" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Label fx:id="filter_category" onMouseClicked="#handleFilter" prefHeight="22.0" prefWidth="124.0" styleClass="sort_date" text="Filter By Category" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <padding>
                         <Insets bottom="2.0" left="4.0" top="2.0" />
                      </padding>
@@ -103,7 +103,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" GridPane.halignment="CENTER">
+                <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleTrack" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="track" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -112,7 +112,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Label GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                <Label onMouseClicked="#handleAdd" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="add" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
