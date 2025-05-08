@@ -17,31 +17,30 @@ import java.sql.*;
 
 public class MenuFilterController {
     @FXML
-    private VBox sorted_transactions; // VBox to display sorted transactions
+    private VBox sorted_transactions;
 
     @FXML
-    private Label name; // Label to display the user's name
+    private Label name;
 
     @FXML
     public void initialize() {
-        if (Session.userId == null) return; // Ensure user is logged in
+        if (Session.getCurrentUser() == null) return;  // Use getCurrentUser() to check if the user is logged in
 
         try (Connection conn = DBUtil.getConnection()) {
-            loadUserInfo(conn); // Load user info
-            loadTransactionsSortedByCategory(conn); // Load and display transactions sorted by date
+            loadUserInfo(conn);
+            loadTransactionsSortedByCategory(conn);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // Method to fetch and display the user's information
     private void loadUserInfo(Connection conn) throws SQLException {
         String sql = "SELECT name FROM users WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId); // Set user ID
+            stmt.setLong(1, Session.getUserId());  // Use getUserId() to fetch the user ID
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    name.setText(rs.getString("name")); // Set the user's name in the label
+                    name.setText(rs.getString("name"));
                 }
             }
         }
@@ -56,7 +55,7 @@ public class MenuFilterController {
     """;
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId); // Set user ID
+            stmt.setLong(1, Session.getUserId());  // Use getUserId() for the query
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     String display = rs.getString("main_category") + " | " +
@@ -71,8 +70,6 @@ public class MenuFilterController {
             }
         }
     }
-
-
 
     @FXML
     public void handleAdd(MouseEvent event) {

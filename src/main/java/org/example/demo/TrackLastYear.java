@@ -35,7 +35,7 @@ public class TrackLastYear implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (Session.userId == null) return;
+        if (Session.getUserId() == null) return;
 
         try (Connection conn = DBUtil.getConnection()) {
             loadUserInfo(conn);
@@ -49,7 +49,7 @@ public class TrackLastYear implements Initializable {
     private void loadUserInfo(Connection conn) throws SQLException {
         String sql = "SELECT name FROM users WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, Session.getUserId());
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     name.setText(rs.getString("name"));
@@ -67,7 +67,7 @@ public class TrackLastYear implements Initializable {
             LIMIT 5
         """;
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, Session.getUserId());
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Label tx = new Label(rs.getDate("date") + ": " +
@@ -85,7 +85,7 @@ public class TrackLastYear implements Initializable {
         String sql = """
             SELECT TO_CHAR(date, 'YYYY-MM') AS month, SUM(amount) AS total
             FROM transactions
-            WHERE user_id = ?
+            WHERE user_id = ? 
               AND date >= CURRENT_DATE - INTERVAL '1 YEAR'
             GROUP BY month
             ORDER BY month
@@ -95,7 +95,7 @@ public class TrackLastYear implements Initializable {
         series.setName("Monthly Spending (Last 12 Months)");
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, Session.getUserId());
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     String month = rs.getString("month");

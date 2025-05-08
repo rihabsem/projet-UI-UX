@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.demo.session.Session;
-
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -24,7 +23,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import org.example.demo.DB.DBUtil;
 
-
 public class TrackLastMonth implements Initializable {
 
     @FXML private Label name;
@@ -35,7 +33,7 @@ public class TrackLastMonth implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (Session.userId == null) return;
+        if (Session.getUserId() == null) return;
 
         try (Connection conn = DBUtil.getConnection()) {
             loadUserInfo(conn);
@@ -44,14 +42,12 @@ public class TrackLastMonth implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private void loadUserInfo(Connection conn) throws SQLException {
         String sql = "SELECT name FROM users WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, Session.getUserId());
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     name.setText(rs.getString("name"));
@@ -59,7 +55,6 @@ public class TrackLastMonth implements Initializable {
             }
         }
     }
-
 
     private void loadLatestTransactions(Connection conn) throws SQLException {
         String sql = """
@@ -70,7 +65,7 @@ public class TrackLastMonth implements Initializable {
             LIMIT 5
         """;
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, Session.getUserId());
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Label tx = new Label(rs.getDate("date") + ": " +
@@ -82,7 +77,6 @@ public class TrackLastMonth implements Initializable {
             }
         }
     }
-
 
     private void loadMonthlyChartData(Connection conn) throws SQLException {
         String sql = """
@@ -98,7 +92,7 @@ public class TrackLastMonth implements Initializable {
         series.setName("Daily Spending");
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, Session.getUserId());
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     String day = rs.getString("day");
@@ -111,6 +105,7 @@ public class TrackLastMonth implements Initializable {
         graph.getData().clear();
         graph.getData().add(series);
     }
+
     @FXML
     private void handleMenu(MouseEvent event) {
         try {
@@ -171,7 +166,4 @@ public class TrackLastMonth implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-
 }

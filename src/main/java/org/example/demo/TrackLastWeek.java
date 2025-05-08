@@ -36,21 +36,23 @@ public class TrackLastWeek implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (Session.userId == null) return;
+        Long userId = Session.getUserId();  // Updated to use Session.getUserId()
+
+        if (userId == null) return;
 
         try (Connection conn = DBUtil.getConnection()) {
-            loadUserInfo(conn);
-            loadWeeklyChartData(conn);
-            loadLatestTransactions(conn);
+            loadUserInfo(conn, userId);
+            loadWeeklyChartData(conn, userId);
+            loadLatestTransactions(conn, userId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void loadUserInfo(Connection conn) throws SQLException {
+    private void loadUserInfo(Connection conn, Long userId) throws SQLException {
         String sql = "SELECT name FROM users WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, userId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     name.setText(rs.getString("name"));
@@ -59,7 +61,7 @@ public class TrackLastWeek implements Initializable {
         }
     }
 
-    private void loadWeeklyChartData(Connection conn) throws SQLException {
+    private void loadWeeklyChartData(Connection conn, Long userId) throws SQLException {
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.minusDays(today.getDayOfWeek().getValue()); // Sunday
         LocalDate endOfWeek = startOfWeek.plusDays(6); // Saturday
@@ -81,7 +83,7 @@ public class TrackLastWeek implements Initializable {
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             // Pass the formatted date string as parameters
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, userId);
             stmt.setString(2, startOfWeek.format(formatter));  // Pass start of the week as String
             stmt.setString(3, endOfWeek.format(formatter));    // Pass end of the week as String
             try (ResultSet rs = stmt.executeQuery()) {
@@ -98,7 +100,7 @@ public class TrackLastWeek implements Initializable {
         graph.getData().add(series);
     }
 
-    private void loadLatestTransactions(Connection conn) throws SQLException {
+    private void loadLatestTransactions(Connection conn, Long userId) throws SQLException {
         String sql = """
             SELECT date, amount, note
             FROM transactions
@@ -107,7 +109,7 @@ public class TrackLastWeek implements Initializable {
             LIMIT 5
         """;
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId);
+            stmt.setLong(1, userId);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Label tx = new Label(rs.getDate("date") + ": " +
@@ -119,6 +121,7 @@ public class TrackLastWeek implements Initializable {
             }
         }
     }
+
     @FXML
     public void handleMenu(MouseEvent event) {
         try {
@@ -183,4 +186,3 @@ public class TrackLastWeek implements Initializable {
         }
     }
 }
-

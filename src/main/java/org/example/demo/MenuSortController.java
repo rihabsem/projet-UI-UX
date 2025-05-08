@@ -20,35 +20,33 @@ import java.sql.SQLException;
 
 public class MenuSortController {
 
-    @FXML private Label name;  // Reference to the name label in FXML
-    @FXML private VBox sorted_transactions;  // Reference to the VBox where transactions will be displayed
+    @FXML private Label name;
+    @FXML private VBox sorted_transactions;
 
     @FXML
     public void initialize() {
-        if (Session.userId == null) return; // Ensure user is logged in
+        if (Session.getCurrentUser() == null) return;  // Use getCurrentUser() to check if the user is logged in
 
         try (Connection conn = DBUtil.getConnection()) {
-            loadUserInfo(conn); // Load user info
-            loadTransactionsSortedByDate(conn); // Load and display transactions sorted by date
+            loadUserInfo(conn);
+            loadTransactionsSortedByDate(conn);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // Method to fetch and display the user's information
     private void loadUserInfo(Connection conn) throws SQLException {
         String sql = "SELECT name FROM users WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId); // Set user ID
+            stmt.setLong(1, Session.getUserId()); // Use getUserId() to get the logged-in user's ID
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    name.setText(rs.getString("name")); // Set the user's name in the label
+                    name.setText(rs.getString("name"));
                 }
             }
         }
     }
 
-    // Method to fetch and display the user's transactions sorted by date
     private void loadTransactionsSortedByDate(Connection conn) throws SQLException {
         String sql = """
             SELECT date, amount, note
@@ -58,7 +56,7 @@ public class MenuSortController {
         """;
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.userId); // Set user ID
+            stmt.setLong(1, Session.getUserId()); // Use getUserId() to set user ID for the query
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     String display = rs.getDate("date") + " - " + rs.getBigDecimal("amount") + " DH - " + rs.getString("note");
