@@ -28,7 +28,7 @@ public class MenuFilterController {
 
         try (Connection conn = DBUtil.getConnection()) {
             loadUserInfo(conn); // Load user info
-            loadTransactionsSortedByDate(conn); // Load and display transactions sorted by date
+            loadTransactionsSortedByCategory(conn); // Load and display transactions sorted by date
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,20 +47,23 @@ public class MenuFilterController {
         }
     }
 
-    // Method to fetch and display the user's transactions sorted by date
-    private void loadTransactionsSortedByDate(Connection conn) throws SQLException {
+    private void loadTransactionsSortedByCategory(Connection conn) throws SQLException {
         String sql = """
-            SELECT date, amount, note
-            FROM transactions
-            WHERE user_id = ?
-            ORDER BY date DESC
-        """;
+        SELECT main_category, date, amount, note
+        FROM transactions
+        WHERE user_id = ?
+        ORDER BY main_category ASC, date DESC
+    """;
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setLong(1, Session.userId); // Set user ID
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    String display = rs.getDate("date") + " - " + rs.getBigDecimal("amount") + " DH - " + rs.getString("note");
+                    String display = rs.getString("main_category") + " | " +
+                            rs.getDate("date") + " - " +
+                            rs.getBigDecimal("amount") + " DH - " +
+                            rs.getString("note");
+
                     Label label = new Label(display); // Create a label for each transaction
                     label.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
                     sorted_transactions.getChildren().add(label); // Add the label to the VBox
@@ -68,6 +71,8 @@ public class MenuFilterController {
             }
         }
     }
+
+
 
     @FXML
     public void handleAdd(MouseEvent event) {
