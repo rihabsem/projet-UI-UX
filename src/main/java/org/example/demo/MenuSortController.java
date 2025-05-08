@@ -25,7 +25,7 @@ public class MenuSortController {
 
     @FXML
     public void initialize() {
-        if (Session.getCurrentUser() == null) return;  // Use getCurrentUser() to check if the user is logged in
+        if (Session.getCurrentUser() == null) return;
 
         try (Connection conn = DBUtil.getConnection()) {
             loadUserInfo(conn);
@@ -38,7 +38,7 @@ public class MenuSortController {
     private void loadUserInfo(Connection conn) throws SQLException {
         String sql = "SELECT name FROM users WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.getUserId()); // Use getUserId() to get the logged-in user's ID
+            stmt.setLong(1, Session.getUserId());
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     name.setText(rs.getString("name"));
@@ -56,13 +56,13 @@ public class MenuSortController {
         """;
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setLong(1, Session.getUserId()); // Use getUserId() to set user ID for the query
+            stmt.setLong(1, Session.getUserId());
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     String display = rs.getDate("date") + " - " + rs.getBigDecimal("amount") + " DH - " + rs.getString("note");
-                    Label label = new Label(display); // Create a label for each transaction
+                    Label label = new Label(display);
                     label.setStyle("-fx-text-fill: white; -fx-font-size: 14px;");
-                    sorted_transactions.getChildren().add(label); // Add the label to the VBox
+                    sorted_transactions.getChildren().add(label);
                 }
             }
         }

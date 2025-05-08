@@ -36,7 +36,7 @@ public class TrackLastWeek implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Long userId = Session.getUserId();  // Updated to use Session.getUserId()
+        Long userId = Session.getUserId();
 
         if (userId == null) return;
 
@@ -63,12 +63,11 @@ public class TrackLastWeek implements Initializable {
 
     private void loadWeeklyChartData(Connection conn, Long userId) throws SQLException {
         LocalDate today = LocalDate.now();
-        LocalDate startOfWeek = today.minusDays(today.getDayOfWeek().getValue()); // Sunday
-        LocalDate endOfWeek = startOfWeek.plusDays(6); // Saturday
+        LocalDate startOfWeek = today.minusDays(today.getDayOfWeek().getValue());
+        LocalDate endOfWeek = startOfWeek.plusDays(6);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        // Modify the query to use explicit type casting for the date comparison
         String sql = """
         SELECT TO_CHAR(date, 'YYYY-MM-DD') AS day, SUM(amount) AS total
         FROM transactions
@@ -82,10 +81,9 @@ public class TrackLastWeek implements Initializable {
         series.setName("Weekly Spending");
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            // Pass the formatted date string as parameters
             stmt.setLong(1, userId);
-            stmt.setString(2, startOfWeek.format(formatter));  // Pass start of the week as String
-            stmt.setString(3, endOfWeek.format(formatter));    // Pass end of the week as String
+            stmt.setString(2, startOfWeek.format(formatter));
+            stmt.setString(3, endOfWeek.format(formatter));
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     String day = rs.getString("day");
@@ -95,7 +93,6 @@ public class TrackLastWeek implements Initializable {
             }
         }
 
-        // Clear previous chart data and add the new series
         graph.getData().clear();
         graph.getData().add(series);
     }

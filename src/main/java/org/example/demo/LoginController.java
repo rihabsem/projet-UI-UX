@@ -20,23 +20,20 @@ import java.sql.*;
 public class LoginController {
 
     @FXML
-    private TextField email;  // Assuming fx:id="email"
+    private TextField email;
 
     @FXML
-    private TextField mot_de_passe;  // Assuming fx:id="mot_de_passe"
+    private TextField mot_de_passe;
 
     @FXML
     public void handleLoginRedirection(MouseEvent event) {
         String UserEmail = email.getText();
         String UserPassword = mot_de_passe.getText();
 
-        // Validate user credentials
         User user = validateUser(UserEmail, UserPassword);
         if (user != null) {
-            // Set the current user in the session
             Session.setCurrentUser(user);
 
-            // Redirect to the next screen
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("transaction_sort_date.fxml"));
                 Scene scene = new Scene(root);
@@ -49,7 +46,6 @@ public class LoginController {
                 e.printStackTrace();
             }
         } else {
-            // Show error message if login fails
             showError("Invalid email or password.");
         }
     }
@@ -64,12 +60,11 @@ public class LoginController {
             ResultSet resultSet = stmt.executeQuery();
 
             if (resultSet.next()) {
-                // If user is found, create a User object and return it
                 User user = new User();
                 user.setId(resultSet.getLong("id"));
                 user.setName(resultSet.getString("name"));
                 user.setEmail(resultSet.getString("email"));
-                user.setPassword(resultSet.getString("password"));  // Even though not necessary for the session, you can store it for debugging
+                user.setPassword(resultSet.getString("password"));
 
                 return user;
             }
@@ -77,7 +72,6 @@ public class LoginController {
             e.printStackTrace();
         }
 
-        // Return null if no user found
         return null;
     }
 

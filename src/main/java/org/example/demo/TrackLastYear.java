@@ -81,7 +81,6 @@ public class TrackLastYear implements Initializable {
     }
 
     private void loadYearlyChartData(Connection conn) throws SQLException {
-        // SQL to get the total amount spent each month for the last 12 months
         String sql = """
             SELECT TO_CHAR(date, 'YYYY-MM') AS month, SUM(amount) AS total
             FROM transactions

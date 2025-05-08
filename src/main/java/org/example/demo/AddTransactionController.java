@@ -16,7 +16,6 @@ import org.example.demo.session.Session;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.Types;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -24,7 +23,7 @@ import java.time.format.DateTimeFormatter;
 public class AddTransactionController {
 
     @FXML private TextField date;
-    @FXML private TextField amount; // Fixed typo here (amont -> amount)
+    @FXML private TextField amont;
     @FXML private ComboBox<String> categories;
     @FXML private TextField note;
     @FXML private Label create_button;
@@ -38,7 +37,7 @@ public class AddTransactionController {
 
     private void handleCreateTransaction(MouseEvent event) {
         String dateInput = date.getText();
-        String amountInput = amount.getText(); // Fixed typo here
+        String amountInput = amont.getText();
         String category = categories.getValue();
         String noteInput = note.getText();
 
@@ -48,17 +47,17 @@ public class AddTransactionController {
         }
 
         try {
-            LocalDate parsedDate = LocalDate.parse(dateInput, formatter); // Parsing with updated format
-            double amountValue = Double.parseDouble(amountInput); // Fixed variable name to match usage
+            LocalDate parsedDate = LocalDate.parse(dateInput, formatter);
+            double amountValue = Double.parseDouble(amountInput);
 
             try (Connection conn = DBUtil.getConnection()) {
                 String sql = "INSERT INTO transactions (user_id, date, amount, main_category, sub_category, note) VALUES (?, ?, ?, ?, ?, ?)";
                 try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                    stmt.setLong(1, Session.getUserId()); // Updated to use Session.getUserId()
+                    stmt.setLong(1, Session.getUserId());
                     stmt.setDate(2, java.sql.Date.valueOf(parsedDate));
                     stmt.setDouble(3, amountValue);
                     stmt.setString(4, category);
-                    stmt.setNull(5, Types.VARCHAR); // Corrected to match SQL NULL type
+                    stmt.setNull(5, Types.VARCHAR);
                     stmt.setString(6, noteInput);
 
                     int rows = stmt.executeUpdate();
@@ -79,7 +78,7 @@ public class AddTransactionController {
 
     private void clearForm() {
         date.clear();
-        amount.clear(); // Fixed typo here
+        amont.clear();
         categories.setValue(null);
         note.clear();
     }
