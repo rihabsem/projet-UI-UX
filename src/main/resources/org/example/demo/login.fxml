@@ -19,18 +19,19 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="247.99999084472657" minHeight="10.0" prefHeight="247.99999084472657" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="256.8000244140625" minHeight="10.0" prefHeight="160.00000915527343" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="282.40000000000003" minHeight="10.0" prefHeight="217.60001220703128" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="266.4000244140625" minHeight="10.0" prefHeight="200.59990234375005" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="282.40000000000003" minHeight="10.0" prefHeight="250.20009765625002" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <GridPane prefHeight="178.0" prefWidth="308.0" GridPane.rowIndex="1">
+                <GridPane prefHeight="180.0" prefWidth="308.0" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="63.999993896484376" minHeight="10.0" prefHeight="63.999993896484376" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="94.19998779296876" minHeight="10.0" prefHeight="63.20000610351561" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="82.00001220703123" minHeight="10.0" prefHeight="57.40000610351561" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="94.19998779296876" minHeight="10.0" prefHeight="34.800012207031244" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="83.80001220703124" minHeight="10.0" prefHeight="66.79998779296875" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <GridPane prefHeight="78.0" prefWidth="308.0">
@@ -67,10 +68,20 @@
                         <TextField fx:id="mot_de_passe" prefHeight="37.0" prefWidth="308.0" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
-                  <Label fx:id="login_button" onMouseClicked="#handleLoginRedirection" styleClass="login" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Label fx:id="login_button" onMouseClicked="#handleLoginRedirection" styleClass="login" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="80.0" right="80.0" top="5.0" />
                      </padding>
+                  </Label>
+                  <Label style="-fx-text-fill: white;" text="Don't have an account?" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="57.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="signUp" style="-fx-text-fill: white; -fx-font-style: bold;" text="Sign up." GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
                   </Label>
                     </children>
                 </GridPane>

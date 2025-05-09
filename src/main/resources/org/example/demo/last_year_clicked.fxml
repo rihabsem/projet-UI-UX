@@ -149,16 +149,16 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Label GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                <Label onMouseClicked="#handleAdd" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                     <graphic>
-                        <ImageView fx:id="add" fitHeight="34.0" fitWidth="25.0" onMouseClicked="#handleAdd" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="add" fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../icons/add.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Label>
-                <Label GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                <Label onMouseClicked="#handleMenu" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                     <graphic>
                         <ImageView fx:id="menu" fitHeight="34.0" fitWidth="25.0" onMouseClicked="#handleMenu" pickOnBounds="true" preserveRatio="true">
                             <image>

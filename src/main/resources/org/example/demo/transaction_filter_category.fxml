@@ -24,7 +24,7 @@
                 <RowConstraints maxHeight="638.4000076293946" minHeight="10.0" prefHeight="532.8" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <GridPane prefHeight="165.0" prefWidth="308.0">
+                <GridPane prefHeight="104.0" prefWidth="308.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -35,26 +35,6 @@
                     </rowConstraints>
                     <children>
                         <Label fx:id="name" style="-fx-font-size: 25px; -fx-text-fill: white; -fx-font-weight: bold;" text="Full Name" />
-                        <VBox alignment="CENTER" prefHeight="87.0" prefWidth="150.0" style="-fx-background-color: rgba(15,3,230,255); -fx-background-radius: 15px;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                            <children>
-                                <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Revenu" />
-                                <Label fx:id="total_revenu" style="-fx-font-size: 15px; -fx-text-fill: #28d754; -fx-font-weight: bold;" text="0 DH" />
-                                <Label fx:id="total_transactions_revenu" style="-fx-text-fill: white; -fx-font-weight: bold;" text="0 Transactions" />
-                            </children>
-                            <GridPane.margin>
-                                <Insets bottom="10.0" right="5.0" top="30.0" />
-                            </GridPane.margin>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="95.0" prefWidth="133.0" style="-fx-background-color: rgba(15,3,230,255); -fx-background-radius: 15px;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                            <children>
-                                <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Expenses" />
-                                <Label fx:id="total_expenses" style="-fx-text-fill: red; -fx-font-size: 15px; -fx-font-weight: bold;" text="100 DH" />
-                                <Label fx:id="total_transactions_expenses" style="-fx-text-fill: white; -fx-font-weight: bold;" text="38 Transactions" />
-                            </children>
-                            <GridPane.margin>
-                                <Insets bottom="10.0" left="5.0" top="30.0" />
-                            </GridPane.margin>
-                        </VBox>
                         <Label fx:id="choice_not_clicked" onMouseClicked="#handleSort" prefHeight="22.0" prefWidth="102.0" styleClass="sort_date" text="▲ Sort By Date" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                             <GridPane.margin>
                                 <Insets left="5.0" />

@@ -121,7 +121,7 @@ public class TrackLastMonth implements Initializable {
             e.printStackTrace();
         }
     }
-
+    @FXML
     public void handleAddTransaction(MouseEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("add.fxml"));

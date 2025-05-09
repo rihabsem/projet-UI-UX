@@ -30,7 +30,8 @@
                     <rowConstraints>
                         <RowConstraints maxHeight="63.999993896484376" minHeight="10.0" prefHeight="63.999993896484376" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="94.19998779296876" minHeight="10.0" prefHeight="63.20000610351561" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="82.00001220703123" minHeight="10.0" prefHeight="57.40000610351561" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="94.19998779296876" minHeight="10.0" prefHeight="35.79998779296875" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="82.00001220703123" minHeight="10.0" prefHeight="59.800012207031244" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <GridPane prefHeight="78.0" prefWidth="308.0">
@@ -67,10 +68,20 @@
                         <TextField fx:id="mot_de_passe" prefHeight="37.0" prefWidth="308.0" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
-                  <Label fx:id="login_button" onMouseClicked="#handleLoginRedirection" styleClass="login" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Label fx:id="login_button" onMouseClicked="#handleLoginRedirection" styleClass="login" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="80.0" right="80.0" top="5.0" />
                      </padding>
+                  </Label>
+                  <Label style="-fx-text-fill: white;" text="Dont have an account?" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="52.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="sign_in" onMouseClicked="#handleSignIn" style="-fx-text-fill: white;" text="Sign in." GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
                   </Label>
                     </children>
                 </GridPane>

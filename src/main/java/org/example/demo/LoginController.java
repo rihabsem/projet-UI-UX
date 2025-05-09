@@ -82,4 +82,19 @@ public class LoginController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    @FXML
+    public void handleSignIn(MouseEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("authentication.fxml"));
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
